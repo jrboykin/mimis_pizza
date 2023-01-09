@@ -1,0 +1,220 @@
+-- Created pizza DB via MySQl Wrkbench GUI
+-- Created tables and insertd data
+
+USE pizza;
+CREATE TABLE `address` 
+(
+  `add_id` int NOT NULL,
+  `delivery_address1` varchar(200)  NOT NULL,
+  `delivery_address2` varchar(200) DEFAULT NULL,
+  `delivery_city` varchar(50) NOT NULL,
+  `delivery_zipcode` varchar(20)  NOT NULL,
+  PRIMARY KEY (`add_id`)
+  );
+------------------------------------------------------
+
+-- Checked to make sure table was added
+SELECT 
+    *
+FROM
+    pizza.address;
+--------------------------------------------------------
+
+-- Added data to table
+
+INSERT INTO `address` VALUES (1, '607 Trails End Road', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (2, '25 Cliffside Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (3, '56 Concord Road', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (4, '82 Lookout Mountain Drive', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (5, '21 Carver Lane', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (6, '61 Plymouth Lane', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (7, '265 Slater Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (8, '159 Adams Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (9, '66 Pine Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (10, '18 Cambridge Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (11, '310 Timrod Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (12, '44 Downey Drive', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (13, '31 Buckland Hills Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (14, '194 Buckland Hills Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (15, '29 Lucian Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (16, '138 Bolton Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (17, '60 Desousa Drive', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (18, '4 Orchard Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (19, '117 Adelaide Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (20, '236 Middle Turnpike East', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (21, '736 Middle Turnpike East', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (22, '95 Briarwood Drive', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (23, '65 Arcellia Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (24, '25 Edwards Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (25, '115 Waddell Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (26, '425 Middle Turnpike East', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (27, '13 Riverview Avenue', NULL, 'Groton', '6340');
+INSERT INTO `address` VALUES (28, '46 Lilac Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (29, '16 Ambassador Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (30, '119 Redwood Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (31, '697 Parker Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (32, '207 Spruce Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (33, '34 Holyoke Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (34, '175 Oak Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (35, '126 Marjorie Lane', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (36, '22 Star Farms Drive', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (37, '89 High Ledge Circle', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (38, '126 Garth Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (39, '44 Colonial Road', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (40, '31 Ashworth Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (41, '145 Saint John Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (42, '211 Oak Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (43, '125 Summer Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (44, '86 Highland Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (45, '61 Hills Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (46, '219 Bidwell Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (47, '44 Campfield Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (48, '184 Woodland Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (49, '225 Kennedy Road', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (50, '173 Center Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (51, '150 Carter Street', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (52, '68 Princeton Street', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (53, '38 Bruce Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (54, '208 Timrod Road', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (55, '981 Groton Long Point Road', NULL, 'Groton', '6340');
+INSERT INTO `address` VALUES (56, '123 Elizabeth Drive', NULL, 'Manchester', '6042');
+INSERT INTO `address` VALUES (57, '35 Lakewood Circle South', NULL, 'Manchester', '6040');
+INSERT INTO `address` VALUES (58, '91 Eldridge Street', NULL, 'Manchester', '6040');
+
+COMMIT;
+----------------------------------------------------------
+
+-- Customers
+CREATE TABLE `customers`
+(
+  `cust_id` int NOT NULL,
+  `cust_firstname` varchar(50) NOT NULL,
+  `cust_lastname` varchar(50) NOT NULL,
+  PRIMARY KEY (`cust_id`)
+  );
+  
+  COMMIT;
+------------------------------------------------------------------  
+INSERT INTO `customers` VALUES (1, 'Derek', 'Ferguson');
+INSERT INTO `customers` VALUES (2, 'Calvin', 'Atkinson');
+INSERT INTO `customers` VALUES (3, 'Daniel', 'Brown');
+INSERT INTO `customers` VALUES (4, 'Mitchell', 'Lopez');
+INSERT INTO `customers` VALUES (5, 'Brittany', 'Olson');
+INSERT INTO `customers` VALUES (6, 'Nicholas', 'Richardson');
+INSERT INTO `customers` VALUES (7, 'Teresa', 'Thompson');
+INSERT INTO `customers` VALUES (8, 'William', 'Norman');
+INSERT INTO `customers` VALUES (9, 'Jose', 'Sutton');
+INSERT INTO `customers` VALUES (10, 'Keith', 'Alexander');
+INSERT INTO `customers` VALUES (11, 'Michael', 'White');
+INSERT INTO `customers` VALUES (12, 'Christine', 'Mathis');
+INSERT INTO `customers` VALUES (13, 'Paul', 'Lee');
+INSERT INTO `customers` VALUES (14, 'Brittany', 'Munoz');
+INSERT INTO `customers` VALUES (15, 'Eric', 'Walsh');
+INSERT INTO `customers` VALUES (16, 'Victoria', 'Gomez');
+INSERT INTO `customers` VALUES (17, 'Alicia', 'Richardson');
+INSERT INTO `customers` VALUES (18, 'Joshua', 'Walker');
+INSERT INTO `customers` VALUES (19, 'Melanie', 'Ruiz');
+INSERT INTO `customers` VALUES (20, 'Jenna', 'Moore');
+INSERT INTO `customers` VALUES (21, 'Vanessa', 'Young');
+INSERT INTO `customers` VALUES (22, 'Ruben', 'Maddox');
+INSERT INTO `customers` VALUES (23, 'Lisa', 'Hull');
+INSERT INTO `customers` VALUES (24, 'Travis', 'Miller');
+INSERT INTO `customers` VALUES (25, 'Rebecca', 'Davis');
+INSERT INTO `customers` VALUES (26, 'Kerry', 'Brewer');
+INSERT INTO `customers` VALUES (27, 'Christopher', 'Clarke');
+INSERT INTO `customers` VALUES (28, 'Walter', 'Vaughn');
+INSERT INTO `customers` VALUES (29, 'Chad', 'Lopez');
+INSERT INTO `customers` VALUES (30, 'Kimberly', 'Hernandez');
+INSERT INTO `customers` VALUES (31, 'Donald', 'Rodriguez');
+INSERT INTO `customers` VALUES (32, 'Julia', 'Welch');
+INSERT INTO `customers` VALUES (33, 'Victor', 'Vincent');
+INSERT INTO `customers` VALUES (34, 'Mitchell', 'Woods');
+INSERT INTO `customers` VALUES (35, 'Ashley', 'Smith');
+INSERT INTO `customers` VALUES (36, 'Mitchell', 'Miller');
+INSERT INTO `customers` VALUES (37, 'Brianna', 'Jones');
+INSERT INTO `customers` VALUES (38, 'Diana', 'Martin');
+INSERT INTO `customers` VALUES (39, 'Kelly', 'Martinez');
+INSERT INTO `customers` VALUES (40, 'Kimberly', 'Bell');
+INSERT INTO `customers` VALUES (41, 'Jennifer', 'Rivera');
+INSERT INTO `customers` VALUES (42, 'Dana', 'Beck');
+INSERT INTO `customers` VALUES (43, 'Shawn', 'Allen');
+INSERT INTO `customers` VALUES (44, 'Zachary', 'Murray');
+INSERT INTO `customers` VALUES (45, 'Mark', 'Fowler');
+INSERT INTO `customers` VALUES (46, 'Destiny', 'Jones');
+INSERT INTO `customers` VALUES (47, 'Kimberly', 'Miller');
+INSERT INTO `customers` VALUES (48, 'Gabriela', 'Sherman');
+INSERT INTO `customers` VALUES (49, 'William', 'Shah');
+INSERT INTO `customers` VALUES (50, 'Shawn', 'Newton');
+INSERT INTO `customers` VALUES (51, 'Michaela', 'Benitez');
+INSERT INTO `customers` VALUES (52, 'Ryan', 'Baker');
+INSERT INTO `customers` VALUES (53, 'Kelly', 'King');
+INSERT INTO `customers` VALUES (54, 'Amy', 'Alexander');
+INSERT INTO `customers` VALUES (55, 'Timothy', 'Davila');
+INSERT INTO `customers` VALUES (56, 'Dave', 'Hall');
+INSERT INTO `customers` VALUES (57, 'Shane', 'Reed');
+INSERT INTO `customers` VALUES (58, 'Michael', 'Moore');
+
+COMMIT;
+--------------------------------------------------
+--Ingredients table
+CREATE TABLE `ingredient` 
+(
+  `ing_id` varchar(10)NOT NULL,
+  `ing_name` varchar(200) NOT NULL,
+  `ing_weight` int NOT NULL,
+  `ing_meas` varchar(20)  NOT NULL,
+  `ing_price` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`ing_id`)
+  );
+
+INSERT INTO `ingredient` VALUES ('ING001', 'Pizza dough ball (8 pack)', 2000, 'grams', 4.22);
+INSERT INTO `ingredient` VALUES ('ING002', 'Tomato sauce ', 4500, 'grams', 3.89);
+INSERT INTO `ingredient` VALUES ('ING003', 'Mozzarella cheese', 2500, 'grams', 14.45);
+INSERT INTO `ingredient` VALUES ('ING004', 'Dried oregano', 500, 'grams', 5.99);
+INSERT INTO `ingredient` VALUES ('ING005', 'Spicy salami', 3500, 'grams', 37.64);
+INSERT INTO `ingredient` VALUES ('ING006', 'Chilli pepper', 1000, 'grams', 6.49);
+INSERT INTO `ingredient` VALUES ('ING007', 'Eggplant', 1000, 'grams', 1.90);
+INSERT INTO `ingredient` VALUES ('ING008', 'Parmesan cheese', 2500, 'grams', 18.75);
+INSERT INTO `ingredient` VALUES ('ING009', 'Gorgonzola cheese', 3500, 'grams', 27.64);
+INSERT INTO `ingredient` VALUES ('ING010', 'Ricotta cheese', 1500, 'grams', 3.99);
+INSERT INTO `ingredient` VALUES ('ING011', 'Anchovies', 1000, 'grams', 10.99);
+INSERT INTO `ingredient` VALUES ('ING012', 'Capers', 1000, 'grams', 4.16);
+INSERT INTO `ingredient` VALUES ('ING013', 'Pepperoni', 2500, 'grams', 24.18);
+INSERT INTO `ingredient` VALUES ('ING014', 'Shrimp', 1000, 'grams', 8.98);
+INSERT INTO `ingredient` VALUES ('ING015', 'Tuna', 2000, 'grams', 7.66);
+INSERT INTO `ingredient` VALUES ('ING016', 'Calamari', 2500, 'grams', 28.77);
+INSERT INTO `ingredient` VALUES ('ING017', 'Ham', 5000, 'grams', 32.45);
+INSERT INTO `ingredient` VALUES ('ING018', 'Pineapple', 5000, 'grams', 6.23);
+INSERT INTO `ingredient` VALUES ('ING019', 'Garlic and parsley butter', 3000, 'grams', 52.10);
+INSERT INTO `ingredient` VALUES ('ING020', 'Chicken wings', 6000, 'grams', 69.83);
+INSERT INTO `ingredient` VALUES ('ING021', 'Rotisserie chicken pieces', 5000, 'grams', 34.45);
+INSERT INTO `ingredient` VALUES ('ING022', 'Croutons', 1250, 'grams', 5.25);
+INSERT INTO `ingredient` VALUES ('ING023', 'Romain lettuce', 7500, 'grams', 13.72);
+INSERT INTO `ingredient` VALUES ('ING024', 'Caesar dressing', 3800, 'grams', 17.98);
+INSERT INTO `ingredient` VALUES ('ING025', 'Vanilla ice cream', 4500, 'mililitres', 15.45);
+INSERT INTO `ingredient` VALUES ('ING026', 'Chocolate ice cream', 4500, 'mililitres', 15.45);
+INSERT INTO `ingredient` VALUES ('ING027', 'Strawberry ice cream', 4500, 'mililitres', 15.45);
+INSERT INTO `ingredient` VALUES ('ING028', 'Pistachio ice cream', 4500, 'mililitres', 15.45);
+INSERT INTO `ingredient` VALUES ('ING029', 'Chocolate brownie', 2500, 'grams', 4.45);
+INSERT INTO `ingredient` VALUES ('ING030', 'Banoffee pie', 1200, 'grams', 1.15);
+INSERT INTO `ingredient` VALUES ('ING031', 'Fruit salad', 5000, 'grams', 7.12);
+INSERT INTO `ingredient` VALUES ('ING032', 'Coca Cola Regular 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING033', 'Coca Cola Regular 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING034', 'Coca Cola Diet 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING035', 'Coca Cola Diet 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING036', 'Sprite Regular 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING037', 'Sprite Regular 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING038', 'Sprite Diet 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING039', 'Sprite Diet 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING040', 'Fanta Regular 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING041', 'Fanta Regular 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING042', 'Fanta Diet 33cl', 1, 'unit', 0.41);
+INSERT INTO `ingredient` VALUES ('ING043', 'Fanta Diet 1.5l', 1, 'unit', 0.96);
+INSERT INTO `ingredient` VALUES ('ING044', 'San Pelligrino 33cl', 1, 'unit', 0.36);
+INSERT INTO `ingredient` VALUES ('ING045', 'San Pelligrino 1.5l', 1, 'unit', 0.86);
+INSERT INTO `ingredient` VALUES ('ING046', 'Perrier 33cl', 1, 'unit', 0.36);
+INSERT INTO `ingredient` VALUES ('ING047', 'Perrier 1.5l', 1, 'unit', 0.86);
+
+COMMIT;
+
+--Repeat for inventory, items, orders, recipe, rota, shift, & staff
