@@ -1,0 +1,618 @@
+//Raw Data//
+
+-- Collected data from random sources.
+-- Compiled into Google Sheet for cleaning
+
+
+
+//SQL//
+
+-- Created pizza DB via MySQl Workbench GUI
+-- Created tables and inserted data
+
+USE pizza;
+CREATE TABLE `address` 
+(
+  `add_id` int NOT NULL,
+  `delivery_address1` varchar(200)  NOT NULL,
+  `delivery_address2` varchar(200) DEFAULT NULL,
+  `delivery_city` varchar(50) NOT NULL,
+  `delivery_zipcode` varchar(20)  NOT NULL,
+  PRIMARY KEY (`add_id`)
+  );
+
+COMMIT;
+------------------------------------------------------
+
+-- Checked to make sure table was added
+SELECT 
+    *
+FROM
+    pizza.address;
+--------------------------------------------------------
+
+-- Added data to table
+
+INSERT INTO `address` VALUES (1, '374 Morrison Rd', null, 'Columbus', '43213');
+INSERT INTO `address` VALUES (2, '3700 Colerain Ave', null, 'Columbus', '43214');
+INSERT INTO `address` VALUES (3, '214 E State St', null, 'Columbus', '43215');
+INSERT INTO `address` VALUES (4, '250 Civic Center Dr', null, 'Columbus', '43215');
+INSERT INTO `address` VALUES (5, '1116 Erickson Rd', null, 'Columbus', '43227');
+INSERT INTO `address` VALUES (6, '369 Vista Dr', null, 'Columbus', '43230');
+INSERT INTO `address` VALUES (7, '101 Brownsfell Dr', null, 'Columbus', '43235');
+INSERT INTO `address` VALUES (8, '401 Mix Ave', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (9, '246 Lincoln Cir', null, 'Columbus', '43230');
+INSERT INTO `address` VALUES (10, '173 N Wilson Rd', null, 'Columbus', '43204');
+INSERT INTO `address` VALUES (11, '350 S Hamilton Rd', null, 'Columbus', '43213');
+INSERT INTO `address` VALUES (12, '3600 Sunbury Rd', null, 'Columbus', '43219');
+INSERT INTO `address` VALUES (13, '2900 Hartshorn St', null, 'Columbus', '43219');
+INSERT INTO `address` VALUES (14, '5300 Coachman Rd', null, 'Columbus', '43220');
+INSERT INTO `address` VALUES (15, '2257 Albert Ave', null, 'Columbus', '43224');
+INSERT INTO `address` VALUES (16, '4032 Donegal Ct', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (17, '2331 Featherwood Dr', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (18, '5600 Trabue Rd', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (19, '401 N Stanwood Rd', null, 'Columbus', '43209');
+INSERT INTO `address` VALUES (20, '1400 Chesapeake Ave', null, 'Columbus', '43212');
+INSERT INTO `address` VALUES (21, '33 N 3rd St', null, 'Columbus', '43215');
+INSERT INTO `address` VALUES (22, '800 Kenwyn Ct', null, 'Columbus', '43220');
+INSERT INTO `address` VALUES (23, '385 Junction Crossing', null, 'Columbus', '43213');
+INSERT INTO `address` VALUES (24, '3450 Indianola Ave', null, 'Columbus', '43214');
+INSERT INTO `address` VALUES (25, '1215 Bailey Noel Dr', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (26, '4948 Folger Dr', null, 'Columbus', '43227');
+INSERT INTO `address` VALUES (27, '4900 Fullerton Dr', null, 'Columbus', '43232');
+INSERT INTO `address` VALUES (28, '1486 Neil Ave', null, 'Columbus', '43201');
+INSERT INTO `address` VALUES (29, '275 E Hinman Ave', null, 'Columbus', '43207');
+INSERT INTO `address` VALUES (30, '80 Broadmeadows Blvd', null, 'Columbus', '43214');
+INSERT INTO `address` VALUES (31, '1106 Sells Ave', null, 'Columbus', '43212');
+INSERT INTO `address` VALUES (32, '85 Marconi Blvd', null, 'Columbus', '43215');
+INSERT INTO `address` VALUES (33, '4607 Hull Farm Ln', null, 'Columbus', '43220');
+INSERT INTO `address` VALUES (34, '3349 E Livingston Ave', null, 'Columbus', '43227');
+INSERT INTO `address` VALUES (35, '19 Fairgreen Cir', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (36, '869 Harwood Dr', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (37, '2825 Neil Ave', null, 'Columbus', '43202');
+INSERT INTO `address` VALUES (38, '180 Clifton Ct', null, 'Columbus', '43203');
+INSERT INTO `address` VALUES (39, '1900 Beverly Rd', null, 'Columbus', '43221');
+INSERT INTO `address` VALUES (40, '2150 Innis Rd', null, 'Columbus', '43224');
+INSERT INTO `address` VALUES (41, '5730 Roche Dr', null, 'Columbus', '43229');
+INSERT INTO `address` VALUES (42, '4841 Mockingbird Ct N', null, 'Columbus', '43229');
+INSERT INTO `address` VALUES (43, '201 Delegate Dr', null, 'Columbus', '43235');
+INSERT INTO `address` VALUES (44, '1200 Westhill Dr', null, 'Columbus', '43213');
+INSERT INTO `address` VALUES (45, '5670 Roche Dr', null, 'Columbus', '43229');
+INSERT INTO `address` VALUES (46, '3201 Westerville Woods', null, 'Columbus', '43231');
+INSERT INTO `address` VALUES (47, '1481 Wilson Ave', null, 'Columbus', '43207');
+INSERT INTO `address` VALUES (48, '3282 S Hamilton Rd', null, 'Columbus', '43232');
+INSERT INTO `address` VALUES (49, '116 E Cooke Rd', null, 'Columbus', '43214');
+INSERT INTO `address` VALUES (50, '1500 Ann St', null, 'Columbus', '43207');
+INSERT INTO `address` VALUES (51, '1491 Mount Vernon Ave', null, 'Columbus', '43203');
+INSERT INTO `address` VALUES (52, '4834 W Broad St', null, 'Columbus', '43228');
+INSERT INTO `address` VALUES (53, '1100 E Broad St', null, 'Columbus', '43205');
+INSERT INTO `address` VALUES (54, '2195 Fenton St', null, 'Columbus', '43224');
+INSERT INTO `address` VALUES (55, '2611 Dresden St', null, 'Columbus', '43211');
+INSERT INTO `address` VALUES (56, '3479 S High St', null, 'Columbus', '43207');
+INSERT INTO `address` VALUES (57, '4301 Lockbourne Rd', null, 'Columbus', '43207');
+INSERT INTO `address` VALUES (58, '2892 Noe Bixby Rd', null, 'Columbus', '43232');
+
+COMMIT;
+--------------------------------------------
+CREATE TABLE `customers`
+ (
+  `cust_id` int NOT NULL,
+  `cust_firstname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cust_lastname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`cust_id`));
+
+INSERT INTO `customers` VALUES (1, 'Derek', 'Ferguson');
+INSERT INTO `customers` VALUES (2, 'Calvin', 'Atkinson');
+INSERT INTO `customers` VALUES (3, 'Daniel', 'Brown');
+INSERT INTO `customers` VALUES (4, 'Mitchell', 'Lopez');
+INSERT INTO `customers` VALUES (5, 'Imani', 'Olson');
+INSERT INTO `customers` VALUES (6, 'Nicholas', 'Cage');
+INSERT INTO `customers` VALUES (7, 'Teresa', 'Thompson');
+INSERT INTO `customers` VALUES (8, 'William', 'Norman');
+INSERT INTO `customers` VALUES (9, 'Jose', 'Sutton');
+INSERT INTO `customers` VALUES (10, 'Keith', 'Alexander');
+INSERT INTO `customers` VALUES (11, 'Michael', 'White');
+INSERT INTO `customers` VALUES (12, 'Judge', 'Mathis');
+INSERT INTO `customers` VALUES (13, 'Paul', 'Wall');
+INSERT INTO `customers` VALUES (14, 'Brittany', 'Munoz');
+INSERT INTO `customers` VALUES (15, 'Eric', 'Walsh');
+INSERT INTO `customers` VALUES (16, 'Victoria', 'Gomez');
+INSERT INTO `customers` VALUES (17, 'Alicia', 'Keys');
+INSERT INTO `customers` VALUES (18, 'Joshua', 'Walker');
+INSERT INTO `customers` VALUES (19, 'Rian', 'Ruiz');
+INSERT INTO `customers` VALUES (20, 'Jenna', 'Moore');
+INSERT INTO `customers` VALUES (21, 'Vanessa', 'Young');
+INSERT INTO `customers` VALUES (22, 'Ruben', 'Studdard');
+INSERT INTO `customers` VALUES (23, 'Lisa', 'Hull');
+INSERT INTO `customers` VALUES (24, 'Travis', 'Scott');
+INSERT INTO `customers` VALUES (25, 'Rebecca', 'Davis');
+INSERT INTO `customers` VALUES (26, 'Kerry', 'Washington');
+INSERT INTO `customers` VALUES (27, 'Christopher', 'Clarke');
+INSERT INTO `customers` VALUES (28, 'Joel', 'Vaughn');
+INSERT INTO `customers` VALUES (29, 'Chad', 'Lopez');
+INSERT INTO `customers` VALUES (30, 'Kimberly', 'Hernandez');
+INSERT INTO `customers` VALUES (31, 'Jeremiah', 'Rodriguez');
+INSERT INTO `customers` VALUES (32, 'Julia', 'Welch');
+INSERT INTO `customers` VALUES (33, 'Victor', 'Vincent');
+INSERT INTO `customers` VALUES (34, 'Mitchell', 'Woods');
+INSERT INTO `customers` VALUES (35, 'Ashley', 'Smith');
+INSERT INTO `customers` VALUES (36, 'Mitchell', 'Miller');
+INSERT INTO `customers` VALUES (37, 'Brianna', 'Jones');
+INSERT INTO `customers` VALUES (38, 'Diana', 'Martin');
+INSERT INTO `customers` VALUES (39, 'Kelly', 'Martinez');
+INSERT INTO `customers` VALUES (40, 'Kimberly', 'Bell');
+INSERT INTO `customers` VALUES (41, 'Jennifer', 'Rivera');
+INSERT INTO `customers` VALUES (42, 'Dana', 'Dane');
+INSERT INTO `customers` VALUES (43, 'Shawn', 'Carter');
+INSERT INTO `customers` VALUES (44, 'Zachary', 'Murray');
+INSERT INTO `customers` VALUES (45, 'Mark', 'Fowler');
+INSERT INTO `customers` VALUES (46, 'Destiny', 'Jones');
+INSERT INTO `customers` VALUES (47, 'Kimberly', 'Miller');
+INSERT INTO `customers` VALUES (48, 'Gabriela', 'Sherman');
+INSERT INTO `customers` VALUES (49, 'William', 'Shah');
+INSERT INTO `customers` VALUES (50, 'Shawn', 'Newton');
+INSERT INTO `customers` VALUES (51, 'Michaela', 'Benitez');
+INSERT INTO `customers` VALUES (52, 'Ryan', 'Baker');
+INSERT INTO `customers` VALUES (53, 'Kelly', 'King');
+INSERT INTO `customers` VALUES (54, 'Amy', 'Alexander');
+INSERT INTO `customers` VALUES (55, 'Timothy', 'Davila');
+INSERT INTO `customers` VALUES (56, 'Dave', 'Hall');
+INSERT INTO `customers` VALUES (57, 'Shane', 'Reed');
+INSERT INTO `customers` VALUES (58, 'Michael', 'Moore');
+
+CREATE TABLE `item` (
+  `item_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sku` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_cat` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_size` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`item_id`));
+  
+ INSERT INTO `recipe` VALUES (1, 'PIZZ-MARG-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (2, 'PIZZ-MARG-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (3, 'PIZZ-MARG-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (4, 'PIZZ-MARG-R', 'ING004', 5);
+INSERT INTO `recipe` VALUES (5, 'PIZZ-MARG-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (6, 'PIZZ-MARG-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (7, 'PIZZ-MARG-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (8, 'PIZZ-MARG-L', 'ING004', 8);
+INSERT INTO `recipe` VALUES (9, 'PIZZ-DIAV-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (10, 'PIZZ-DIAV-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (11, 'PIZZ-DIAV-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (12, 'PIZZ-DIAV-R', 'ING005', 50);
+INSERT INTO `recipe` VALUES (13, 'PIZZ-DIAV-R', 'ING006', 10);
+INSERT INTO `recipe` VALUES (14, 'PIZZ-DIAV-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (15, 'PIZZ-DIAV-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (16, 'PIZZ-DIAV-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (17, 'PIZZ-DIAV-L', 'ING005', 70);
+INSERT INTO `recipe` VALUES (18, 'PIZZ-DIAV-L', 'ING006', 15);
+INSERT INTO `recipe` VALUES (19, 'PIZZ-PARM-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (20, 'PIZZ-PARM-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (21, 'PIZZ-PARM-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (22, 'PIZZ-PARM-R', 'ING007', 120);
+INSERT INTO `recipe` VALUES (23, 'PIZZ-PARM-R', 'ING008', 170);
+INSERT INTO `recipe` VALUES (24, 'PIZZ-PARM-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (25, 'PIZZ-PARM-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (26, 'PIZZ-PARM-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (27, 'PIZZ-PARM-L', 'ING007', 150);
+INSERT INTO `recipe` VALUES (28, 'PIZZ-PARM-L', 'ING008', 200);
+INSERT INTO `recipe` VALUES (29, 'PIZZ-QUAT-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (30, 'PIZZ-QUAT-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (31, 'PIZZ-QUAT-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (32, 'PIZZ-QUAT-R', 'ING008', 150);
+INSERT INTO `recipe` VALUES (33, 'PIZZ-QUAT-R', 'ING009', 150);
+INSERT INTO `recipe` VALUES (34, 'PIZZ-QUAT-R', 'ING010', 150);
+INSERT INTO `recipe` VALUES (35, 'PIZZ-QUAT-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (36, 'PIZZ-QUAT-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (37, 'PIZZ-QUAT-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (38, 'PIZZ-QUAT-L', 'ING008', 180);
+INSERT INTO `recipe` VALUES (39, 'PIZZ-QUAT-L', 'ING009', 180);
+INSERT INTO `recipe` VALUES (40, 'PIZZ-QUAT-L', 'ING010', 180);
+INSERT INTO `recipe` VALUES (41, 'PIZZ-NAPO-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (42, 'PIZZ-NAPO-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (43, 'PIZZ-NAPO-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (44, 'PIZZ-NAPO-R', 'ING011', 100);
+INSERT INTO `recipe` VALUES (45, 'PIZZ-NAPO-R', 'ING012', 5);
+INSERT INTO `recipe` VALUES (46, 'PIZZ-NAPO-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (47, 'PIZZ-NAPO-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (48, 'PIZZ-NAPO-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (49, 'PIZZ-NAPO-L', 'ING011', 50);
+INSERT INTO `recipe` VALUES (50, 'PIZZ-NAPO-L', 'ING012', 7);
+INSERT INTO `recipe` VALUES (51, 'PIZZ-PEPP-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (52, 'PIZZ-PEPP-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (53, 'PIZZ-PEPP-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (54, 'PIZZ-PEPP-R', 'ING013', 200);
+INSERT INTO `recipe` VALUES (55, 'PIZZ-PEPP-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (56, 'PIZZ-PEPP-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (57, 'PIZZ-PEPP-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (58, 'PIZZ-PEPP-L', 'ING013', 240);
+INSERT INTO `recipe` VALUES (59, 'PIZZ-HAWA-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (60, 'PIZZ-HAWA-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (61, 'PIZZ-HAWA-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (62, 'PIZZ-HAWA-R', 'ING017', 130);
+INSERT INTO `recipe` VALUES (63, 'PIZZ-HAWA-R', 'ING018', 100);
+INSERT INTO `recipe` VALUES (64, 'PIZZ-HAWA-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (65, 'PIZZ-HAWA-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (66, 'PIZZ-HAWA-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (67, 'PIZZ-HAWA-L', 'ING017', 150);
+INSERT INTO `recipe` VALUES (68, 'PIZZ-HAWA-L', 'ING018', 120);
+INSERT INTO `recipe` VALUES (69, 'PIZZ-SEAF-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (70, 'PIZZ-SEAF-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (71, 'PIZZ-SEAF-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (72, 'PIZZ-SEAF-R', 'ING014', 150);
+INSERT INTO `recipe` VALUES (73, 'PIZZ-SEAF-R', 'ING015', 150);
+INSERT INTO `recipe` VALUES (74, 'PIZZ-SEAF-R', 'ING016', 150);
+INSERT INTO `recipe` VALUES (75, 'PIZZ-SEAF-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (76, 'PIZZ-SEAF-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (77, 'PIZZ-SEAF-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (78, 'PIZZ-SEAF-L', 'ING014', 175);
+INSERT INTO `recipe` VALUES (79, 'PIZZ-SEAF-L', 'ING015', 175);
+INSERT INTO `recipe` VALUES (80, 'PIZZ-SEAF-L', 'ING016', 175);
+INSERT INTO `recipe` VALUES (81, 'SIDE-GARL-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (82, 'SIDE-GARL-R', 'ING019', 15);
+INSERT INTO `recipe` VALUES (83, 'SIDE-CHIC-R', 'ING020', 120);
+INSERT INTO `recipe` VALUES (84, 'SIDE-BREA-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (85, 'SIDE-CAES-R', 'ING021', 120);
+INSERT INTO `recipe` VALUES (86, 'SIDE-CAES-R', 'ING022', 50);
+INSERT INTO `recipe` VALUES (87, 'SIDE-CAES-R', 'ING023', 100);
+INSERT INTO `recipe` VALUES (88, 'SIDE-CAES-R', 'ING024', 20);
+INSERT INTO `recipe` VALUES (89, 'DESS-ICE-CHOC', 'ING025', 100);
+INSERT INTO `recipe` VALUES (90, 'DESS-ICE-VANI', 'ING026', 100);
+INSERT INTO `recipe` VALUES (91, 'DESS-ICE-STRA', 'ING027', 100);
+INSERT INTO `recipe` VALUES (92, 'DESS-ICE-PIST', 'ING028', 100);
+INSERT INTO `recipe` VALUES (93, 'DESS-CHOC-BROW', 'ING029', 75);
+INSERT INTO `recipe` VALUES (94, 'DESS-BANO-PIE', 'ING030', 120);
+INSERT INTO `recipe` VALUES (95, 'DESS-FRUI-SALA', 'ING031', 150);
+INSERT INTO `recipe` VALUES (96, 'BEVA-CC-REG33', 'ING032', 1);
+INSERT INTO `recipe` VALUES (97, 'BEVA-CC-REG1500', 'ING033', 1);
+INSERT INTO `recipe` VALUES (98, 'BEVA-CC-DIE33', 'ING034', 1);
+INSERT INTO `recipe` VALUES (99, 'BEVA-CC-DIE1500', 'ING035', 1);
+INSERT INTO `recipe` VALUES (100, 'BEVA-7U-REG33', 'ING036', 1);
+INSERT INTO `recipe` VALUES (101, 'BEVA-7U-REG1500', 'ING037', 1);
+INSERT INTO `recipe` VALUES (102, 'BEVA-7U-DIE33', 'ING038', 1);
+INSERT INTO `recipe` VALUES (103, 'BEVA-7U-DIE1500', 'ING039', 1);
+INSERT INTO `recipe` VALUES (104, 'BEVA-FAN-REG33', 'ING040', 1);
+INSERT INTO `recipe` VALUES (105, 'BEVA-FAN-REG1500', 'ING041', 1);
+INSERT INTO `recipe` VALUES (106, 'BEVA-FAN-DIE33', 'ING042', 1);
+INSERT INTO `recipe` VALUES (107, 'BEVA-FAN-DIE1500', 'ING043', 1);
+INSERT INTO `recipe` VALUES (108, 'BEVA-SAN-REG33', 'ING044', 1);
+INSERT INTO `recipe` VALUES (109, 'BEVA-SAN-REG1500', 'ING045', 1);
+INSERT INTO `recipe` VALUES (110, 'BEVA-PER-REG33', 'ING046', 1);
+INSERT INTO `recipe` VALUES (111, 'BEVA-PER-REG1500', 'ING047', 1);*/
+
+DROP TABLE IF EXISTS `recipe`;
+CREATE TABLE `recipe` (
+  `row_id` int NOT NULL,
+  `recipe_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ing_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
+  PRIMARY KEY (`row_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `recipe` VALUES (1, 'PIZZ-MARG-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (2, 'PIZZ-MARG-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (3, 'PIZZ-MARG-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (4, 'PIZZ-MARG-R', 'ING004', 5);
+INSERT INTO `recipe` VALUES (5, 'PIZZ-MARG-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (6, 'PIZZ-MARG-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (7, 'PIZZ-MARG-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (8, 'PIZZ-MARG-L', 'ING004', 8);
+INSERT INTO `recipe` VALUES (9, 'PIZZ-DIAV-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (10, 'PIZZ-DIAV-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (11, 'PIZZ-DIAV-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (12, 'PIZZ-DIAV-R', 'ING005', 50);
+INSERT INTO `recipe` VALUES (13, 'PIZZ-DIAV-R', 'ING006', 10);
+INSERT INTO `recipe` VALUES (14, 'PIZZ-DIAV-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (15, 'PIZZ-DIAV-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (16, 'PIZZ-DIAV-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (17, 'PIZZ-DIAV-L', 'ING005', 70);
+INSERT INTO `recipe` VALUES (18, 'PIZZ-DIAV-L', 'ING006', 15);
+INSERT INTO `recipe` VALUES (19, 'PIZZ-PARM-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (20, 'PIZZ-PARM-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (21, 'PIZZ-PARM-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (22, 'PIZZ-PARM-R', 'ING007', 120);
+INSERT INTO `recipe` VALUES (23, 'PIZZ-PARM-R', 'ING008', 170);
+INSERT INTO `recipe` VALUES (24, 'PIZZ-PARM-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (25, 'PIZZ-PARM-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (26, 'PIZZ-PARM-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (27, 'PIZZ-PARM-L', 'ING007', 150);
+INSERT INTO `recipe` VALUES (28, 'PIZZ-PARM-L', 'ING008', 200);
+INSERT INTO `recipe` VALUES (29, 'PIZZ-QUAT-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (30, 'PIZZ-QUAT-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (31, 'PIZZ-QUAT-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (32, 'PIZZ-QUAT-R', 'ING008', 150);
+INSERT INTO `recipe` VALUES (33, 'PIZZ-QUAT-R', 'ING009', 150);
+INSERT INTO `recipe` VALUES (34, 'PIZZ-QUAT-R', 'ING010', 150);
+INSERT INTO `recipe` VALUES (35, 'PIZZ-QUAT-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (36, 'PIZZ-QUAT-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (37, 'PIZZ-QUAT-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (38, 'PIZZ-QUAT-L', 'ING008', 180);
+INSERT INTO `recipe` VALUES (39, 'PIZZ-QUAT-L', 'ING009', 180);
+INSERT INTO `recipe` VALUES (40, 'PIZZ-QUAT-L', 'ING010', 180);
+INSERT INTO `recipe` VALUES (41, 'PIZZ-NAPO-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (42, 'PIZZ-NAPO-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (43, 'PIZZ-NAPO-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (44, 'PIZZ-NAPO-R', 'ING011', 100);
+INSERT INTO `recipe` VALUES (45, 'PIZZ-NAPO-R', 'ING012', 5);
+INSERT INTO `recipe` VALUES (46, 'PIZZ-NAPO-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (47, 'PIZZ-NAPO-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (48, 'PIZZ-NAPO-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (49, 'PIZZ-NAPO-L', 'ING011', 50);
+INSERT INTO `recipe` VALUES (50, 'PIZZ-NAPO-L', 'ING012', 7);
+INSERT INTO `recipe` VALUES (51, 'PIZZ-PEPP-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (52, 'PIZZ-PEPP-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (53, 'PIZZ-PEPP-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (54, 'PIZZ-PEPP-R', 'ING013', 200);
+INSERT INTO `recipe` VALUES (55, 'PIZZ-PEPP-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (56, 'PIZZ-PEPP-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (57, 'PIZZ-PEPP-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (58, 'PIZZ-PEPP-L', 'ING013', 240);
+INSERT INTO `recipe` VALUES (59, 'PIZZ-HAWA-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (60, 'PIZZ-HAWA-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (61, 'PIZZ-HAWA-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (62, 'PIZZ-HAWA-R', 'ING017', 130);
+INSERT INTO `recipe` VALUES (63, 'PIZZ-HAWA-R', 'ING018', 100);
+INSERT INTO `recipe` VALUES (64, 'PIZZ-HAWA-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (65, 'PIZZ-HAWA-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (66, 'PIZZ-HAWA-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (67, 'PIZZ-HAWA-L', 'ING017', 150);
+INSERT INTO `recipe` VALUES (68, 'PIZZ-HAWA-L', 'ING018', 120);
+INSERT INTO `recipe` VALUES (69, 'PIZZ-SEAF-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (70, 'PIZZ-SEAF-R', 'ING002', 80);
+INSERT INTO `recipe` VALUES (71, 'PIZZ-SEAF-R', 'ING003', 170);
+INSERT INTO `recipe` VALUES (72, 'PIZZ-SEAF-R', 'ING014', 150);
+INSERT INTO `recipe` VALUES (73, 'PIZZ-SEAF-R', 'ING015', 150);
+INSERT INTO `recipe` VALUES (74, 'PIZZ-SEAF-R', 'ING016', 150);
+INSERT INTO `recipe` VALUES (75, 'PIZZ-SEAF-L', 'ING001', 300);
+INSERT INTO `recipe` VALUES (76, 'PIZZ-SEAF-L', 'ING002', 100);
+INSERT INTO `recipe` VALUES (77, 'PIZZ-SEAF-L', 'ING003', 200);
+INSERT INTO `recipe` VALUES (78, 'PIZZ-SEAF-L', 'ING014', 175);
+INSERT INTO `recipe` VALUES (79, 'PIZZ-SEAF-L', 'ING015', 175);
+INSERT INTO `recipe` VALUES (80, 'PIZZ-SEAF-L', 'ING016', 175);
+INSERT INTO `recipe` VALUES (81, 'SIDE-GARL-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (82, 'SIDE-GARL-R', 'ING019', 15);
+INSERT INTO `recipe` VALUES (83, 'SIDE-CHIC-R', 'ING020', 120);
+INSERT INTO `recipe` VALUES (84, 'SIDE-BREA-R', 'ING001', 250);
+INSERT INTO `recipe` VALUES (85, 'SIDE-CAES-R', 'ING021', 120);
+INSERT INTO `recipe` VALUES (86, 'SIDE-CAES-R', 'ING022', 50);
+INSERT INTO `recipe` VALUES (87, 'SIDE-CAES-R', 'ING023', 100);
+INSERT INTO `recipe` VALUES (88, 'SIDE-CAES-R', 'ING024', 20);
+INSERT INTO `recipe` VALUES (89, 'DESS-ICE-CHOC', 'ING025', 100);
+INSERT INTO `recipe` VALUES (90, 'DESS-ICE-VANI', 'ING026', 100);
+INSERT INTO `recipe` VALUES (91, 'DESS-ICE-STRA', 'ING027', 100);
+INSERT INTO `recipe` VALUES (92, 'DESS-ICE-PIST', 'ING028', 100);
+INSERT INTO `recipe` VALUES (93, 'DESS-CHOC-BROW', 'ING029', 75);
+INSERT INTO `recipe` VALUES (94, 'DESS-BANO-PIE', 'ING030', 120);
+INSERT INTO `recipe` VALUES (95, 'DESS-FRUI-SALA', 'ING031', 150);
+INSERT INTO `recipe` VALUES (96, 'BEVA-CC-REG33', 'ING032', 1);
+INSERT INTO `recipe` VALUES (97, 'BEVA-CC-REG1500', 'ING033', 1);
+INSERT INTO `recipe` VALUES (98, 'BEVA-CC-DIE33', 'ING034', 1);
+INSERT INTO `recipe` VALUES (99, 'BEVA-CC-DIE1500', 'ING035', 1);
+INSERT INTO `recipe` VALUES (100, 'BEVA-7U-REG33', 'ING036', 1);
+INSERT INTO `recipe` VALUES (101, 'BEVA-7U-REG1500', 'ING037', 1);
+INSERT INTO `recipe` VALUES (102, 'BEVA-7U-DIE33', 'ING038', 1);
+INSERT INTO `recipe` VALUES (103, 'BEVA-7U-DIE1500', 'ING039', 1);
+INSERT INTO `recipe` VALUES (104, 'BEVA-FAN-REG33', 'ING040', 1);
+INSERT INTO `recipe` VALUES (105, 'BEVA-FAN-REG1500', 'ING041', 1);
+INSERT INTO `recipe` VALUES (106, 'BEVA-FAN-DIE33', 'ING042', 1);
+INSERT INTO `recipe` VALUES (107, 'BEVA-FAN-DIE1500', 'ING043', 1);
+INSERT INTO `recipe` VALUES (108, 'BEVA-SAN-REG33', 'ING044', 1);
+INSERT INTO `recipe` VALUES (109, 'BEVA-SAN-REG1500', 'ING045', 1);
+INSERT INTO `recipe` VALUES (110, 'BEVA-PER-REG33', 'ING046', 1);
+INSERT INTO `recipe` VALUES (111, 'BEVA-PER-REG1500', 'ING047', 1);
+
+
+
+
+CREATE TABLE `rota` (
+  `row_id` int NOT NULL,
+  `rota_id` varchar(20)  NOT NULL,
+  `date` date NOT NULL,
+  `shift_id` varchar(20) NOT NULL,
+  `staff_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`row_id`)
+);
+
+INSERT INTO `rota` VALUES (1, 'ro0001', '2022-08-10', 'sh0005', 'st0001');
+INSERT INTO `rota` VALUES (2, 'ro0001', '2022-08-10', 'sh0005', 'st0002');
+INSERT INTO `rota` VALUES (3, 'ro0001', '2022-08-10', 'sh0005', 'st0009');
+INSERT INTO `rota` VALUES (4, 'ro0001', '2022-08-10', 'sh0005', 'st0010');
+INSERT INTO `rota` VALUES (5, 'ro0001', '2022-08-10', 'sh0006', 'st0001');
+INSERT INTO `rota` VALUES (6, 'ro0001', '2022-08-10', 'sh0006', 'st0002');
+INSERT INTO `rota` VALUES (7, 'ro0001', '2022-08-10', 'sh0006', 'st0009');
+INSERT INTO `rota` VALUES (8, 'ro0001', '2022-08-10', 'sh0006', 'st0010');
+INSERT INTO `rota` VALUES (9, 'ro0002', '2022-08-11', 'sh0007', 'st0001');
+INSERT INTO `rota` VALUES (10, 'ro0002', '2022-08-11', 'sh0007', 'st0002');
+INSERT INTO `rota` VALUES (11, 'ro0002', '2022-08-11', 'sh0007', 'st0009');
+INSERT INTO `rota` VALUES (12, 'ro0002', '2022-08-11', 'sh0007', 'st0010');
+INSERT INTO `rota` VALUES (13, 'ro0002', '2022-08-11', 'sh0008', 'st0001');
+INSERT INTO `rota` VALUES (14, 'ro0002', '2022-08-11', 'sh0008', 'st0002');
+INSERT INTO `rota` VALUES (15, 'ro0002', '2022-08-11', 'sh0008', 'st0009');
+INSERT INTO `rota` VALUES (16, 'ro0002', '2022-08-11', 'sh0008', 'st0010');
+INSERT INTO `rota` VALUES (17, 'ro0003', '2022-08-12', 'sh0009', 'st0001');
+INSERT INTO `rota` VALUES (18, 'ro0003', '2022-08-12', 'sh0009', 'st0002');
+INSERT INTO `rota` VALUES (19, 'ro0003', '2022-08-12', 'sh0009', 'st0009');
+INSERT INTO `rota` VALUES (20, 'ro0003', '2022-08-12', 'sh0009', 'st0010');
+INSERT INTO `rota` VALUES (21, 'ro0003', '2022-08-12', 'sh0010', 'st0001');
+INSERT INTO `rota` VALUES (22, 'ro0003', '2022-08-12', 'sh0010', 'st0002');
+INSERT INTO `rota` VALUES (23, 'ro0003', '2022-08-12', 'sh0010', 'st0009');
+INSERT INTO `rota` VALUES (24, 'ro0003', '2022-08-12', 'sh0010', 'st0010');
+INSERT INTO `rota` VALUES (25, 'ro0004', '2022-08-13', 'sh0011', 'st0003');
+INSERT INTO `rota` VALUES (26, 'ro0004', '2022-08-13', 'sh0011', 'st0004');
+INSERT INTO `rota` VALUES (27, 'ro0004', '2022-08-13', 'sh0011', 'st0011');
+INSERT INTO `rota` VALUES (28, 'ro0004', '2022-08-13', 'sh0011', 'st0012');
+INSERT INTO `rota` VALUES (29, 'ro0004', '2022-08-13', 'sh0012', 'st0003');
+INSERT INTO `rota` VALUES (30, 'ro0004', '2022-08-13', 'sh0012', 'st0004');
+INSERT INTO `rota` VALUES (31, 'ro0004', '2022-08-13', 'sh0012', 'st0011');
+INSERT INTO `rota` VALUES (32, 'ro0004', '2022-08-13', 'sh0012', 'st0012');
+INSERT INTO `rota` VALUES (33, 'ro0005', '2022-08-14', 'sh0013', 'st0003');
+INSERT INTO `rota` VALUES (34, 'ro0005', '2022-08-14', 'sh0013', 'st0004');
+INSERT INTO `rota` VALUES (35, 'ro0005', '2022-08-14', 'sh0013', 'st0011');
+INSERT INTO `rota` VALUES (36, 'ro0005', '2022-08-14', 'sh0013', 'st0012');
+INSERT INTO `rota` VALUES (37, 'ro0005', '2022-08-14', 'sh0014', 'st0003');
+INSERT INTO `rota` VALUES (38, 'ro0005', '2022-08-14', 'sh0014', 'st0004');
+INSERT INTO `rota` VALUES (39, 'ro0005', '2022-08-14', 'sh0014', 'st0011');
+INSERT INTO `rota` VALUES (40, 'ro0005', '2022-08-14', 'sh0014', 'st0012');
+
+---------------------------------
+CREATE TABLE `shift` (
+  `shift_id` varchar(20)  NOT NULL,
+  `day_of_week` varchar(10) NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  PRIMARY KEY (`shift_id`)
+);
+
+INSERT INTO `shift` VALUES ('sh0001', 'Monday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0002', 'Monday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0003', 'Tuesday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0004', 'Tuesday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0005', 'Wednesday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0006', 'Wednesday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0007', 'Thursday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0008', 'Thursday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0009', 'Friday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0010', 'Friday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0011', 'Saturday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0012', 'Saturday', '18:30:00', '23:00:00');
+INSERT INTO `shift` VALUES ('sh0013', 'Sunday', '10:30:00', '14:30:00');
+INSERT INTO `shift` VALUES ('sh0014', 'Sunday', '18:30:00', '23:00:00');
+---------------------
+
+COMMIT;
+----------------------
+
+
+CREATE TABLE `staff` (
+  `staff_id` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `position` varchar(100) NOT NULL,
+  `hourly_rate` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`staff_id`)
+);
+
+
+
+INSERT INTO `staff` VALUES ('st0001', 'Gordon', 'Ramsey', 'Chef', 17.25);
+INSERT INTO `staff` VALUES ('st0002', 'Carmine', 'Berzatto', 'Head chef', 21.50);
+INSERT INTO `staff` VALUES ('st0003', 'Ocho', 'Cinco', 'Chef', 17.25);
+INSERT INTO `staff` VALUES ('st0004', 'Savannah', 'James', 'Head chef', 21.50);
+INSERT INTO `staff` VALUES ('st0005', 'Imani', 'Renee', 'Chef', 17.25);
+INSERT INTO `staff` VALUES ('st0006', 'Nia', 'Long', 'Head chef', 21.50);
+INSERT INTO `staff` VALUES ('st0007', 'Zachery', 'Robins', 'Chef', 17.25);
+INSERT INTO `staff` VALUES ('st0008', 'Guy', 'Fieri', 'Head chef', 21.50);
+INSERT INTO `staff` VALUES ('st0009', 'Raheem', 'DeVaughn', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0010', 'Desiree', 'Gardner', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0011', 'Ivan', 'English', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0012', 'Johnathon', 'Bradford', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0013', 'Melissa', 'McCarthy', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0014', 'David', 'Schitt', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0015', 'Amiyah', 'Lambert', 'Delivery rider', 14.50);
+INSERT INTO `staff` VALUES ('st0016', 'Dale', 'Earnhart', 'Delivery rider', 14.50);
+COMMIT;
+
+------------------------------------------
+
+CREATE TABLE `inventory` (
+  `inv_id` int NOT NULL,
+  `item_id` varchar(10) NOT NULL,
+  `quantity` int NOT NULL,
+  PRIMARY KEY (`inv_id`)
+);
+
+
+INSERT INTO `inventory` VALUES (1, 'ING001', 50);
+INSERT INTO `inventory` VALUES (2, 'ING002', 25);
+INSERT INTO `inventory` VALUES (3, 'ING003', 40);
+INSERT INTO `inventory` VALUES (4, 'ING004', 4);
+INSERT INTO `inventory` VALUES (5, 'ING005', 2);
+INSERT INTO `inventory` VALUES (6, 'ING006', 4);
+INSERT INTO `inventory` VALUES (7, 'ING007', 20);
+INSERT INTO `inventory` VALUES (8, 'ING008', 10);
+INSERT INTO `inventory` VALUES (9, 'ING009', 10);
+INSERT INTO `inventory` VALUES (10, 'ING010', 10);
+INSERT INTO `inventory` VALUES (11, 'ING011', 2);
+INSERT INTO `inventory` VALUES (12, 'ING012', 2);
+INSERT INTO `inventory` VALUES (13, 'ING013', 10);
+INSERT INTO `inventory` VALUES (14, 'ING014', 10);
+INSERT INTO `inventory` VALUES (15, 'ING015', 3);
+INSERT INTO `inventory` VALUES (16, 'ING016', 3);
+INSERT INTO `inventory` VALUES (17, 'ING017', 4);
+INSERT INTO `inventory` VALUES (18, 'ING018', 4);
+INSERT INTO `inventory` VALUES (19, 'ING019', 3);
+INSERT INTO `inventory` VALUES (20, 'ING020', 4);
+INSERT INTO `inventory` VALUES (21, 'ING021', 5);
+INSERT INTO `inventory` VALUES (22, 'ING022', 5);
+INSERT INTO `inventory` VALUES (23, 'ING023', 5);
+INSERT INTO `inventory` VALUES (24, 'ING024', 5);
+INSERT INTO `inventory` VALUES (25, 'ING025', 2);
+INSERT INTO `inventory` VALUES (26, 'ING026', 2);
+INSERT INTO `inventory` VALUES (27, 'ING027', 2);
+INSERT INTO `inventory` VALUES (28, 'ING028', 2);
+INSERT INTO `inventory` VALUES (29, 'ING029', 2);
+INSERT INTO `inventory` VALUES (30, 'ING030', 2);
+INSERT INTO `inventory` VALUES (31, 'ING031', 2);
+INSERT INTO `inventory` VALUES (32, 'ING032', 120);
+INSERT INTO `inventory` VALUES (33, 'ING033', 120);
+INSERT INTO `inventory` VALUES (34, 'ING034', 120);
+INSERT INTO `inventory` VALUES (35, 'ING035', 120);
+INSERT INTO `inventory` VALUES (36, 'ING036', 120);
+INSERT INTO `inventory` VALUES (37, 'ING037', 120);
+INSERT INTO `inventory` VALUES (38, 'ING038', 120);
+INSERT INTO `inventory` VALUES (39, 'ING039', 120);
+INSERT INTO `inventory` VALUES (40, 'ING040', 120);
+INSERT INTO `inventory` VALUES (41, 'ING041', 120);
+INSERT INTO `inventory` VALUES (42, 'ING042', 120);
+INSERT INTO `inventory` VALUES (43, 'ING043', 120);
+INSERT INTO `inventory` VALUES (44, 'ING044', 120);
+INSERT INTO `inventory` VALUES (45, 'ING045', 120);
+INSERT INTO `inventory` VALUES (46, 'ING046', 120);
+INSERT INTO `inventory` VALUES (47, 'ING047', 120);
+
+
+--------------------------------
+
+-- Collect data for Dashboard
+
+--------------------------------
+
+- Dashboard 1 - Orders Activity-
+
+Create a dashboard with the following data: 
+
+1. Total orders 
+2. Total sales 
+3. Total items 
+4. Average order value 
+5. Sales by category 
+6. Top selling items
+7. Orders by address 
+8. Orders by delivery/pickup 
+
+------------------------------------------------------------------------------
+* Join items and address to orders table
+ -- Code for join
+
+SELECT 
+    o.order_id,
+    i.item_price,
+    o.quantity,
+    i.item_cat,
+    i.item_name,
+    o.created_at,
+    a.delivery_address1,
+    a.delivery_address2,
+    a.delivery_city,
+    a.delivery_zipcode,
+    o.delivery
+FROM
+    orders o
+        LEFT JOIN
+    item i ON o.item_id = i.item_id
+        LEFT JOIN
+    address a ON o.add_id = a.add_id
+
+
+------------------------------------------------------------------------------
